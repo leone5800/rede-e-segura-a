@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Material educacional interativo sobre Redes de Computadores e Segurança da Informação na Nuvem: fundamentos, ataques, defesa, laboratório e quiz." />
+  <meta name="theme-color" content="#0a0e14" />
+  <title>CyberAula // Redes & Segurança na Nuvem</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Matrix background -->
+  <canvas id="matrix" aria-hidden="true"></canvas>
+
+  <!-- Header / Nav -->
+  <header class="site-header">
+    <a href="#topo" class="brand" aria-label="CyberAula início">
+      <span class="brand-bracket">&lt;</span>
+      <span class="brand-name">CyberAula</span>
+      <span class="brand-cursor" aria-hidden="true">_</span>
+      <span class="brand-bracket">/&gt;</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mainNav">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="main-nav" id="mainNav" aria-label="Navegação principal">
+      <a href="#fundamentos">Redes</a>
+      <a href="#nuvem">Nuvem</a>
+      <a href="#ataques">Ataques</a>
+      <a href="#defesa">Defesa</a>
+      <a href="#laboratorio">Laboratório</a>
+      <a href="#quiz">Quiz</a>
+    </nav>
+  </header>
+
+  <main id="topo">
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <div class="hero-inner">
+        <div class="terminal-window hero-terminal" role="img" aria-label="Terminal de boas-vindas">
+          <div class="terminal-bar">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+            <span class="terminal-title">root@cyberaula: ~</span>
+          </div>
+          <div class="terminal-body" id="heroTerminal"></div>
+        </div>
+        <h1 class="hero-title text-balance">Redes de Computadores &amp; <span class="accent">Segurança na Nuvem</span></h1>
+        <p class="hero-sub text-pretty">Um material interativo para entender como as redes funcionam, como os ataques acontecem e, principalmente, como se defender. Ataque e defesa explicados passo a passo — <strong>tudo para fins educacionais</strong>.</p>
+        <div class="hero-actions">
+          <a href="#fundamentos" class="btn btn-primary">Começar a aula</a>
+          <a href="#laboratorio" class="btn btn-ghost">Ir ao laboratório</a>
+        </div>
+        <div class="hero-stats">
+          <div><strong>5</strong><span>módulos</span></div>
+          <div><strong>4</strong><span>simulações</span></div>
+          <div><strong>1</strong><span>quiz final</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AVISO ÉTICO -->
+    <aside class="ethics" role="note" aria-label="Aviso ético">
+      <div class="ethics-inner">
+        <span class="ethics-icon" aria-hidden="true">!</span>
+        <p><strong>Uso ético e educacional.</strong> Todo o conteúdo e as simulações deste site são demonstrações controladas e seguras. Testar ataques em sistemas de terceiros sem autorização é crime (Lei nº 12.737/2012 - "Lei Carolina Dieckmann" e LGPD). Aprenda para <em>defender</em>.</p>
+      </div>
+    </aside>
+
+    <!-- FUNDAMENTOS DE REDES -->
+    <section class="module" id="fundamentos">
+      <div class="module-head">
+        <span class="module-tag">// módulo 01</span>
+        <h2 class="module-title">Fundamentos de Redes</h2>
+        <p class="module-desc text-pretty">Antes de falar de segurança, precisamos entender como os dados viajam pela internet. Estes são os conceitos-base de qualquer profissional de redes.</p>
+      </div>
+      <div class="card-grid">
+        <article class="card">
+          <h3><span class="card-num">01</span> Modelo OSI &amp; TCP/IP</h3>
+          <p>Redes são organizadas em <strong>camadas</strong>. O modelo OSI tem 7 camadas (Física → Aplicação); o TCP/IP resume em 4. Cada camada tem uma responsabilidade: cabos, endereçamento, transporte, aplicação.</p>
+          <ul class="tag-list">
+            <li>Física</li><li>Enlace</li><li>Rede (IP)</li><li>Transporte (TCP/UDP)</li><li>Aplicação (HTTP)</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3><span class="card-num">02</span> Endereço IP &amp; Portas</h3>
+          <p>O <strong>IP</strong> identifica um dispositivo na rede (ex: <code>192.168.0.10</code>). A <strong>porta</strong> identifica o serviço dentro dele. Pense no IP como o prédio e a porta como o apartamento.</p>
+          <ul class="tag-list">
+            <li>80 HTTP</li><li>443 HTTPS</li><li>22 SSH</li><li>53 DNS</li><li>3306 MySQL</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3><span class="card-num">03</span> DNS</h3>
+          <p>O <strong>DNS</strong> é a "agenda telefônica" da internet: traduz nomes como <code>leone.com</code> para endereços IP. Sem ele, você teria que decorar números para acessar cada site.</p>
+        </article>
+        <article class="card">
+          <h3><span class="card-num">04</span> Firewall</h3>
+          <p>Um <strong>firewall</strong> filtra o tráfego que entra e sai da rede com base em regras. É a primeira linha de defesa, decidindo o que pode passar (allow) e o que é bloqueado (deny).</p>
+        </article>
+      </div>
+
+      <!-- Interativo: viagem do pacote -->
+      <div class="interactive">
+        <h3 class="interactive-title">Interativo: a viagem de um pacote</h3>
+        <p class="interactive-desc">Clique para enviar um pacote do seu computador até o servidor e veja por onde ele passa.</p>
+        <div class="packet-track" id="packetTrack">
+          <div class="hop" data-hop="0"><span class="hop-icon">PC</span><span class="hop-label">Seu PC</span></div>
+          <div class="hop" data-hop="1"><span class="hop-icon">RT</span><span class="hop-label">Roteador</span></div>
+          <div class="hop" data-hop="2"><span class="hop-icon">FW</span><span class="hop-label">Firewall</span></div>
+          <div class="hop" data-hop="3"><span class="hop-icon">DNS</span><span class="hop-label">DNS</span></div>
+          <div class="hop" data-hop="4"><span class="hop-icon">SRV</span><span class="hop-label">Servidor</span></div>
+          <div class="packet" id="packet" aria-hidden="true"></div>
+        </div>
+        <button class="btn btn-primary" id="sendPacket">Enviar pacote</button>
+        <p class="packet-status" id="packetStatus" aria-live="polite">Pronto para enviar.</p>
+      </div>
+    </section>
+
+    <!-- SEGURANCA NA NUVEM -->
+    <section class="module alt" id="nuvem">
+      <div class="module-head">
+        <span class="module-tag">// módulo 02</span>
+        <h2 class="module-title">Segurança na Nuvem</h2>
+        <p class="module-desc text-pretty">Na nuvem (AWS, Azure, GCP), a segurança é uma responsabilidade dividida entre você e o provedor. Entender essa divisão evita a maioria dos incidentes.</p>
+      </div>
+
+      <div class="shared-model">
+        <div class="shared-col provider">
+          <h3>Responsabilidade do Provedor</h3>
+          <p class="shared-sub">Segurança <em>DA</em> nuvem</p>
+          <ul>
+            <li>Datacenters físicos</li>
+            <li>Hardware e rede base</li>
+            <li>Hipervisor / virtualização</li>
+          </ul>
+        </div>
+        <div class="shared-col client">
+          <h3>Responsabilidade do Cliente</h3>
+          <p class="shared-sub">Segurança <em>NA</em> nuvem</p>
+          <ul>
+            <li>Configuração de acesso (IAM)</li>
+            <li>Dados e criptografia</li>
+            <li>Regras de rede / firewall</li>
+            <li>Buckets e permissões</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card-grid">
+        <article class="card">
+          <h3><span class="card-num">01</span> IAM &amp; Menor Privilégio</h3>
+          <p><strong>IAM</strong> (Identity and Access Management) controla quem pode fazer o quê. Regra de ouro: <strong>menor privilégio</strong> — dê apenas o acesso estritamente necessário.</p>
+        </article>
+        <article class="card">
+          <h3><span class="card-num">02</span> Buckets mal configurados</h3>
+          <p>Um dos vazamentos mais comuns: um "bucket" (armazenamento) deixado <strong>público</strong> por engano. Dados sensíveis expostos para toda a internet.</p>
+        </article>
+        <article class="card">
+          <h3><span class="card-num">03</span> Criptografia</h3>
+          <p>Dados devem ser cifrados <strong>em trânsito</strong> (TLS/HTTPS) e <strong>em repouso</strong> (no disco). Assim, mesmo vazando, o conteúdo é ilegível sem a chave.</p>
+        </article>
+        <article class="card">
+          <h3><span class="card-num">04</span> Monitoramento &amp; Logs</h3>
+          <p>Registrar tudo (logs) permite detectar acessos suspeitos. Ferramentas de nuvem alertam sobre atividades anormais em tempo real.</p>
+        </article>
+      </div>
+
+      <!-- Interativo: configuração de bucket -->
+      <div class="interactive">
+        <h3 class="interactive-title">Interativo: configure um bucket com segurança</h3>
+        <p class="interactive-desc">Ajuste as opções e veja o nível de risco. Objetivo: chegar a "SEGURO".</p>
+        <div class="bucket-config">
+          <label class="switch-row">
+            <span>Acesso público ao bucket</span>
+            <input type="checkbox" id="cfgPublic" checked />
+            <span class="switch" aria-hidden="true"></span>
+          </label>
+          <label class="switch-row">
+            <span>Criptografia em repouso</span>
+            <input type="checkbox" id="cfgEncrypt" />
+            <span class="switch" aria-hidden="true"></span>
+          </label>
+          <label class="switch-row">
+            <span>Exigir HTTPS (TLS)</span>
+            <input type="checkbox" id="cfgTls" />
+            <span class="switch" aria-hidden="true"></span>
+          </label>
+          <label class="switch-row">
+            <span>Registro de logs de acesso</span>
+            <input type="checkbox" id="cfgLogs" />
+            <span class="switch" aria-hidden="true"></span>
+          </label>
+        </div>
+        <div class="risk-meter">
+          <div class="risk-bar"><div class="risk-fill" id="riskFill"></div></div>
+          <span class="risk-label" id="riskLabel">Risco: CRÍTICO</span>
+        </div>
+        <p class="bucket-feedback" id="bucketFeedback" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <!-- ATAQUES -->
+    <section class="module" id="ataques">
+      <div class="module-head">
+        <span class="module-tag">// módulo 03</span>
+        <h2 class="module-title">Ataques Comuns</h2>
+        <p class="module-desc text-pretty">Conhecer o ataque é o primeiro passo para a defesa. Veja como cada técnica funciona — e, ao lado, como se proteger dela.</p>
+      </div>
+      <div class="attack-grid" id="attackGrid">
+        <!-- cards injetados via JS para incluir "como funciona" / "como defender" -->
+      </div>
+    </section>
+
+    <!-- DEFESA -->
+    <section class="module alt" id="defesa">
+      <div class="module-head">
+        <span class="module-tag">// módulo 04</span>
+        <h2 class="module-title">Defesa &amp; Mitigação</h2>
+        <p class="module-desc text-pretty">As boas práticas que reduzem drasticamente o risco. Defesa em profundidade: várias camadas trabalhando juntas.</p>
+      </div>
+      <div class="card-grid">
+        <article class="card def">
+          <h3><span class="shield" aria-hidden="true">◈</span> MFA</h3>
+          <p>Autenticação multifator exige um segundo fator além da senha (app, token, biometria). Bloqueia a maioria dos ataques de senha vazada.</p>
+        </article>
+        <article class="card def">
+          <h3><span class="shield" aria-hidden="true">◈</span> Criptografia</h3>
+          <p>Proteja dados em trânsito e em repouso. Nunca trafegue informações sensíveis em texto puro (HTTP).</p>
+        </article>
+        <article class="card def">
+          <h3><span class="shield" aria-hidden="true">◈</span> WAF</h3>
+          <p>Web Application Firewall filtra requisições maliciosas (SQLi, XSS) antes de chegarem à aplicação.</p>
+        </article>
+        <article class="card def">
+          <h3><span class="shield" aria-hidden="true">◈</span> Atualizações</h3>
+          <p>Manter sistemas atualizados corrige vulnerabilidades conhecidas que atacantes exploram.</p>
+        </article>
+        <article class="card def">
+          <h3><span class="shield" aria-hidden="true">◈</span> Backup 3-2-1</h3>
+          <p>3 cópias, 2 mídias diferentes, 1 fora do local. Sua melhor defesa contra ransomware.</p>
+        </article>
+        <article class="card def">
+          <h3><span class="shield" aria-hidden="true">◈</span> Monitoramento</h3>
+          <p>Logs + alertas + resposta a incidentes. Detectar rápido reduz muito o impacto de um ataque.</p>
+        </article>
+      </div>
+
+      <!-- Interativo: força de senha -->
+      <div class="interactive">
+        <h3 class="interactive-title">Interativo: teste a força de uma senha</h3>
+        <p class="interactive-desc">Digite uma senha de exemplo (não use uma real!) e veja a análise em tempo real.</p>
+        <input type="text" class="pw-input" id="pwInput" placeholder="Digite uma senha de exemplo..." autocomplete="off" spellcheck="false" aria-label="Senha de exemplo" />
+        <div class="pw-strength"><div class="pw-strength-fill" id="pwFill"></div></div>
+        <p class="pw-label" id="pwLabel">Aguardando...</p>
+        <ul class="pw-checks" id="pwChecks">
+          <li data-check="len">Pelo menos 12 caracteres</li>
+          <li data-check="upper">Letra maiúscula</li>
+          <li data-check="lower">Letra minúscula</li>
+          <li data-check="num">Número</li>
+          <li data-check="sym">Símbolo</li>
+        </ul>
+        <p class="pw-time" id="pwTime"></p>
+      </div>
+    </section>
+
+    <!-- LABORATORIO -->
+    <section class="module" id="laboratorio">
+      <div class="module-head">
+        <span class="module-tag">// módulo 05</span>
+        <h2 class="module-title">Laboratório Interativo</h2>
+        <p class="module-desc text-pretty">Simulações <strong>100% seguras e locais</strong> (nada sai do seu navegador) para visualizar como ataques e defesas se comportam.</p>
+      </div>
+
+      <div class="lab-grid">
+        <!-- Sim 1: Brute force -->
+        <div class="lab-card">
+          <h3 class="lab-title">Simulação: Ataque de Força Bruta</h3>
+          <p class="lab-desc">Um atacante tenta adivinhar uma senha testando combinações. Veja a diferença entre uma senha fraca e uma forte.</p>
+          <div class="terminal-window">
+            <div class="terminal-bar">
+              <span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span>
+              <span class="terminal-title">bruteforce.sh — simulação</span>
+            </div>
+            <div class="terminal-body lab-terminal" id="bruteTerminal">$ aguardando início...</div>
+          </div>
+          <div class="lab-controls">
+            <select id="bruteTarget" aria-label="Senha alvo">
+              <option value="1234">Alvo: "1234" (fraca)</option>
+              <option value="senha">Alvo: "senha" (fraca)</option>
+              <option value="Kp9#mZ">Alvo: "Kp9#mZ" (forte)</option>
+            </select>
+            <button class="btn btn-primary" id="bruteStart">Iniciar simulação</button>
+          </div>
+        </div>
+
+        <!-- Sim 2: Phishing detector -->
+        <div class="lab-card">
+          <h3 class="lab-title">Treino: Detector de Phishing</h3>
+          <p class="lab-desc">Este e-mail é legítimo ou golpe? Analise os sinais e decida. Aprenda a reconhecer fraudes.</p>
+          <div class="phish-email" id="phishEmail" aria-live="polite"></div>
+          <div class="lab-controls">
+            <button class="btn btn-danger" id="phishScam">É golpe</button>
+            <button class="btn btn-safe" id="phishLegit">É legítimo</button>
+          </div>
+          <p class="lab-feedback" id="phishFeedback" aria-live="polite"></p>
+          <p class="lab-score" id="phishScore">Acertos: 0 / 0</p>
+        </div>
+
+        <!-- Sim 3: DDoS -->
+        <div class="lab-card">
+          <h3 class="lab-title">Simulação: DDoS &amp; Mitigação</h3>
+          <p class="lab-desc">Um DDoS sobrecarrega o servidor com requisições. Ative a proteção e veja o tráfego malicioso ser filtrado.</p>
+          <div class="ddos-viz" id="ddosViz" aria-hidden="true">
+            <div class="ddos-server" id="ddosServer">SRV</div>
+          </div>
+          <div class="ddos-gauge"><div class="ddos-gauge-fill" id="ddosGauge"></div></div>
+          <p class="lab-feedback" id="ddosStatus" aria-live="polite">Servidor online. Carga: 0%</p>
+          <div class="lab-controls">
+            <button class="btn btn-danger" id="ddosAttack">Lançar DDoS</button>
+            <label class="switch-row inline">
+              <span>Proteção (WAF/CDN)</span>
+              <input type="checkbox" id="ddosProtect" />
+              <span class="switch" aria-hidden="true"></span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Sim 4: SQL Injection -->
+        <div class="lab-card">
+          <h3 class="lab-title">Demonstração: SQL Injection</h3>
+          <p class="lab-desc">Veja como uma entrada não tratada pode burlar um login — e como consultas parametrizadas resolvem.</p>
+          <div class="sqli-login">
+            <input type="text" id="sqliInput" placeholder="usuário" aria-label="Campo de usuário vulnerável" value="admin" />
+            <div class="lab-controls">
+              <button class="btn btn-ghost" id="sqliInject">Injetar <code>' OR '1'='1</code></button>
+            </div>
+            <label class="switch-row inline">
+              <span>Consulta parametrizada (defesa)</span>
+              <input type="checkbox" id="sqliSafe" />
+              <span class="switch" aria-hidden="true"></span>
+            </label>
+          </div>
+          <div class="terminal-window">
+            <div class="terminal-bar">
+              <span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span>
+              <span class="terminal-title">query.sql</span>
+            </div>
+            <div class="terminal-body lab-terminal" id="sqliOutput">-- monte a query acima</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUIZ -->
+    <section class="module alt" id="quiz">
+      <div class="module-head">
+        <span class="module-tag">// módulo final</span>
+        <h2 class="module-title">Quiz de Fixação</h2>
+        <p class="module-desc text-pretty">Teste seus conhecimentos. São 8 perguntas cobrindo tudo que vimos na aula.</p>
+      </div>
+      <div class="quiz-wrap" id="quizWrap">
+        <div class="quiz-progress"><div class="quiz-progress-fill" id="quizProgress"></div></div>
+        <div class="quiz-card" id="quizCard" aria-live="polite"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p class="footer-brand">&lt;CyberAula/&gt;</p>
+    <p class="footer-text">Material educacional sobre Redes de Computadores e Segurança da Informação na Nuvem. Construído com HTML, CSS e JavaScript puro.</p>
+    <p class="footer-note">Uso exclusivamente educacional. Pratique segurança ofensiva apenas em ambientes autorizados.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
